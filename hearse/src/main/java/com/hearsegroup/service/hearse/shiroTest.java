@@ -67,9 +67,12 @@ public class shiroTest {
             System.out.println("失败");
         }
 
-        subject.checkRole("admin");
-        subject.checkPermissions("user:insert");
-
-
+        try {
+            subject.checkRole("warehouse");
+            subject.checkPermissions("user:read");
+        } catch (Exception e) {
+            throw new IllegalArgumentException("没有权限");
+        }
+        System.out.println("查询用户");
     }
 }
